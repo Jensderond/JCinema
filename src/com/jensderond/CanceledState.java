@@ -1,13 +1,14 @@
 package com.jensderond;
 
-public class PaidState implements State {
+public class CanceledState implements State {
     private Booking booking;
 
-    public PaidState(Booking booking) {
+    public CanceledState(Booking booking) {
         this.booking = booking;
     }
 
     @Override
+
     public void get() {
 
     }
