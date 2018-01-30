@@ -6,7 +6,7 @@ public interface State {
 
 	void update();
 
-	void paybooking();
+	void payBooking();
 
 	void cancel();
 }

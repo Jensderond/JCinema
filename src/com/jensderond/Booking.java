@@ -8,12 +8,12 @@ public class Booking {
     private int id;
 
     private Customer customer;
-	private State createdState;
-	private State pendingState;
-	private State paidState;
-    private State canceledState;
+	public State createdState;
+	public State pendingState;
+    public State paidState;
+    public State canceledState;
     private Map<Integer, Ticket> ticketList = new HashMap<>();
-	private State state = this.createdState;
+    public State state = createdState;
 
     public Booking(Customer customer) {
         this.id = i++;
@@ -42,6 +42,26 @@ public class Booking {
 
     public int getId() {
         return id;
+    }
+
+    public void createBooking() {
+        this.state.create();
+    }
+
+    public void updateBooking() {
+        this.state.update();
+    }
+
+    public void payBooking() {
+        this.state.payBooking();
+    }
+
+    public void cancelBooking() {
+        this.state.cancel();
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
     public void getTickets() {
