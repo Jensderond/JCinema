@@ -7,10 +7,10 @@ public class CreatedState implements State {
         this.booking = booking;
     }
 
-    @Override
 
-    public void get() {
-        System.out.println("Get created booking.");
+    @Override
+    public void create() {
+        System.out.println("");
     }
 
     @Override
