@@ -25,7 +25,7 @@ public class CreatedState implements State {
 
     @Override
     public void cancel(){
-        System.out.println( "You've just canceled this booking with ID: "+ booking.getId() );
+        System.out.println( "You've just canceled this booking with ID: " + booking.getId() );
         booking.setState( booking.canceledState );
     }
 }
