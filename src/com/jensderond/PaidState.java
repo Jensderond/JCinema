@@ -20,7 +20,6 @@ public class PaidState implements State {
     @Override
     public void payBooking() {
         System.out.println("betaal de boeking");
-        booking.stat
     }
 
     @Override

@@ -44,6 +44,10 @@ public class Booking {
         return id;
     }
 
+    public void setState(State state) {
+        this.state = state;
+    }
+
     public void getTickets() {
         for (Object o : ticketList.entrySet()) {
             Map.Entry ticket = (Map.Entry) o;
