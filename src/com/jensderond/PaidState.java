@@ -9,21 +9,22 @@ public class PaidState implements State {
 
     @Override
     public void create() {
-        System.out.println("");
+        System.out.println( "You can't a booking in paid state" );
     }
 
     @Override
     public void update() {
-        System.out.println("je de booking niet aanpassen");
+        System.out.println( "You can't update a booking in paid state" );
     }
 
     @Override
     public void payBooking() {
-        System.out.println("betaal de boeking");
+        System.out.println( "You can't pay the booking in paid state" );
+        System.out.println( "Booking with ID: " + booking.getId() + " is already paid!" );
     }
 
     @Override
     public void cancel(){
-
+        System.out.println( "You can't cancel the booking in paid state" );
     }
 }

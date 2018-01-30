@@ -8,12 +8,12 @@ public class Booking {
     private int id;
 
     private Customer customer;
-	public State createdState;
+	private State createdState;
 	public State pendingState;
     public State paidState;
     public State canceledState;
     private Map<Integer, Ticket> ticketList = new HashMap<>();
-    public State state = createdState;
+    private State state;
 
     public Booking(Customer customer) {
         this.id = i++;
@@ -23,6 +23,7 @@ public class Booking {
         this.pendingState = new PendingState(this);
         this.paidState = new PaidState(this);
         this.canceledState = new CanceledState(this);
+        this.state = createdState;
 
         Movie movie1 = new Movie("Gladiator", 9, "Beast movie");
         Movie movie2 = new Movie("The Simpsons", 11, "Cartoon movie");
