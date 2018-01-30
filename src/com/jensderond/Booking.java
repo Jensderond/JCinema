@@ -8,7 +8,7 @@ public class Booking {
     private int id;
 
     private Customer customer;
-	private State createdState;
+	public State createdState;
 	public State pendingState;
     public State paidState;
     public State canceledState;
@@ -63,6 +63,10 @@ public class Booking {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public State getState() {
+        return this.state;
     }
 
     public void getTickets() {
