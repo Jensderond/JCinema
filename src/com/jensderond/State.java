@@ -2,10 +2,11 @@ package com.jensderond;
 
 public interface State {
 
-	void get();
+	void create();
 
 	void update();
 
-	void rollback();
+	void paybooking();
 
+	void cancel();
 }

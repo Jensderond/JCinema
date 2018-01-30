@@ -8,17 +8,23 @@ public class PaidState implements State {
     }
 
     @Override
-    public void get() {
-
+    public void create() {
+        System.out.println("");
     }
 
     @Override
     public void update() {
-
+        System.out.println("je de booking niet aanpassen");
     }
 
     @Override
-    public void rollback() {
+    public void payBooking() {
+        System.out.println("betaal de boeking");
+        booking.stat
+    }
+
+    @Override
+    public void cancel(){
 
     }
 }

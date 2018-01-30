@@ -19,7 +19,13 @@ public class CanceledState implements State {
     }
 
     @Override
-    public void rollback() {
+    public void payBooking() {
 
     }
+
+    @Override
+    public void cancel(){
+
+    }
+
 }
