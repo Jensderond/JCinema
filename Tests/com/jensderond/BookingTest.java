@@ -30,6 +30,7 @@ public class BookingTest {
     @org.junit.Test
     public void createBookingInPendingState() {
         this.booking.createBooking();
+        this.booking.createBooking();
 
         assertEquals("Create booking in the Paid state", this.booking.pendingState.getClass(), this.booking.getState().getClass());
     }
@@ -38,6 +39,7 @@ public class BookingTest {
     public void createBookingInPaidState() {
         this.booking.createBooking();
         this.booking.payBooking();
+        this.booking.createBooking();
 
         assertEquals("Create booking in the Paid state", this.booking.paidState.getClass(), this.booking.getState().getClass());
     }
@@ -54,7 +56,7 @@ public class BookingTest {
     public void updateBookingInCreateState() {
         this.booking.updateBooking();
 
-        assertEquals("Update booking in the Create state", this.booking.createdState.getClass(), this.booking.getState().getClass());
+        assertEquals("You can Update booking in the Create state", this.booking.createdState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
@@ -62,7 +64,7 @@ public class BookingTest {
         this.booking.createBooking();
         this.booking.updateBooking();
 
-        assertEquals("Update booking in the Pending state", this.booking.pendingState.getClass(), this.booking.getState().getClass());
+        assertEquals("You can Update booking in the Pending state", this.booking.pendingState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
@@ -71,7 +73,7 @@ public class BookingTest {
         this.booking.payBooking();
         this.booking.updateBooking();
 
-        assertEquals("Update booking in the Paid state", this.booking.paidState.getClass(), this.booking.getState().getClass());
+        assertEquals("You can't Update booking in the Paid state", this.booking.paidState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
@@ -79,14 +81,14 @@ public class BookingTest {
         this.booking.cancelBooking();
         this.booking.updateBooking();
 
-        assertEquals("Update booking in the Canceled state", this.booking.canceledState.getClass(), this.booking.getState().getClass());
+        assertEquals("You can't Update booking in the Canceled state", this.booking.canceledState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
     public void payBookingInCreateState() {
         this.booking.payBooking();
 
-        assertEquals("Pay booking in the Create state", this.booking.createdState.getClass(), this.booking.getState().getClass());
+        assertEquals("You can Pay booking in the Create state", this.booking.createdState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
@@ -94,7 +96,7 @@ public class BookingTest {
         this.booking.createBooking();
         this.booking.payBooking();
 
-        assertEquals("Pay booking in the Pending state", this.booking.pendingState.getClass(), this.booking.getState().getClass());
+        assertEquals("You can Pay booking in the Pending state", this.booking.paidState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
@@ -102,7 +104,7 @@ public class BookingTest {
         this.booking.createBooking();
         this.booking.payBooking();
 
-        assertEquals("Pay booking in the Paid state", this.booking.paidState.getClass(), this.booking.getState().getClass());
+        assertEquals("You can't Pay booking in the Paid state", this.booking.paidState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
@@ -110,41 +112,31 @@ public class BookingTest {
         this.booking.cancelBooking();
         this.booking.payBooking();
 
-        assertEquals("Pay booking in the cancel state", this.booking.canceledState.getClass(), this.booking.getState().getClass());
+        assertEquals("You can't Pay booking in the cancel state", this.booking.canceledState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
     public void cancelBookingInCreatedState(){
-        this.booking.createBooking();
         this.booking.cancelBooking();
 
-        assertEquals("You can't created a booking in cancel state", this.booking.createdState.getClass(), this.booking.getState().getClass());
+        assertEquals("You can cancel a booking in create state", this.booking.canceledState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
     public void cancelBookingInPendingState(){
-        this.booking.updateBooking();
+        this.booking.createBooking();
         this.booking.cancelBooking();
 
-        assertEquals("You can't update a booking in cancel state", this.booking.pendingState.getClass(), this.booking.getState().getClass());
+        assertEquals("You can cancel a booking in pending state", this.booking.canceledState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
     public void cancelBookingInPaidState(){
         this.booking.createBooking();
+        this.booking.payBooking();
         this.booking.cancelBooking();
 
-        assertEquals("You can't pay the booking in cancel state", this.booking.paidState.getClass(), this.booking.getState().getClass());
+        assertEquals("You can't cancel the booking in paid state", this.booking.paidState.getClass(), this.booking.getState().getClass());
     }
-
-    @org.junit.Test
-    public void cancelBookingInCanceledState(){
-        this.booking.createBooking();
-        this.booking.cancelBooking();
-
-        assertEquals("booking is already canceled", this.booking.canceledState.getClass(), this.booking.getState().getClass());
-    }
-
-
 
 }
