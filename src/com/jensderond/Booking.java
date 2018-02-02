@@ -23,19 +23,16 @@ public class Booking {
     private DataStorage dataStorage;
     private SendMessage messageMedium;
 
-    public Booking(Customer customer, String storageType, String messageType) {
+    public Booking(Customer customer, DataStorage storageType, SendMessage messageType) {
         this.id = i++;
 
         // Get storageType from factory
-        StorageFactory storageFactory = new StorageFactory();
-        dataStorage = storageFactory.getStorage(storageType);
-        dataStorage.getData();
-        dataStorage.setData("Anton is awesome");
+        this.dataStorage = storageType;
+        this.dataStorage.getData();
+        this.dataStorage.setData("Anton is awesome");
 
         // Get messageType from factory
-        MessageFactory messageFactory = new MessageFactory();
-        messageMedium = messageFactory.getMessageType(messageType);
-        messageMedium.sendMessage("Lets go");
+        this.messageMedium = messageType;
 
         // Initialize all states
         this.createdState = new CreatedState(this);
