@@ -1,5 +1,8 @@
 package com.jensderond;
 
+import com.jensderond.Data.DataStorage;
+import com.jensderond.Data.StorageFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,20 +17,27 @@ public class Booking {
     public State canceledState;
     private Map<Integer, Ticket> ticketList = new HashMap<>();
     private State state;
+    private DataStorage dataStorage;
 
-    public Booking(Customer customer) {
+    public Booking(Customer customer, String storageType) {
         this.id = i++;
 
-        this.customer = customer;
+        // Get storageType from factory
+        StorageFactory storageFactory = new StorageFactory();
+        dataStorage = storageFactory.getStorage(storageType);
+        dataStorage.getData();
+        dataStorage.setData("Anton is awesome");
+
+        // Initialize all states
         this.createdState = new CreatedState(this);
         this.pendingState = new PendingState(this);
         this.paidState = new PaidState(this);
         this.canceledState = new CanceledState(this);
         this.state = createdState;
 
+        this.customer = customer;
         Movie movie1 = new Movie("Gladiator", 9, "Beast movie");
         Movie movie2 = new Movie("The Simpsons", 11, "Cartoon movie");
-
         for ( int i = 0; i < 5; i++ ) {
             Ticket t;
             if( i % 2 == 0 ) {
@@ -36,7 +46,6 @@ public class Booking {
             else {
                 t = new Ticket(movie2);
             }
-
             ticketList.put(t.getId(), t);
         }
     }
