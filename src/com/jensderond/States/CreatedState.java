@@ -12,6 +12,7 @@ public class CreatedState extends State {
     @Override
     public void create() {
         System.out.println( "You've just created a booking in created state" );
+        booking.setLastModified();
         booking.setState( booking.pendingState );
     }
 

@@ -1,9 +1,11 @@
 package com.jensderond.Data;
 
+import java.util.List;
+
 public class DatabaseStorage implements DataStorage {
 
     @Override
-    public String getData() {
+    public List<String> getData() {
         return null;
     }
 

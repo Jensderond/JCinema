@@ -1,11 +1,11 @@
 package com.jensderond;
 
 import com.jensderond.Data.DataStorage;
-import com.jensderond.Data.StorageFactory;
-import com.jensderond.Message.MessageFactory;
 import com.jensderond.Message.SendMessage;
 import com.jensderond.States.*;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,15 +13,16 @@ public class Booking {
     private static int i = 1;
     private int id;
 
-    private Customer customer;
+    public Customer customer;
 	public State createdState;
 	public State pendingState;
     public State paidState;
     public State canceledState;
     private Map<Integer, Ticket> ticketList = new HashMap<>();
     private State state;
-    private DataStorage dataStorage;
-    private SendMessage messageMedium;
+    public DataStorage dataStorage;
+    public SendMessage messageMedium;
+    public LocalDateTime lastModified;
 
     public Booking(Customer customer, DataStorage storageType, SendMessage messageType) {
         this.id = i++;
@@ -42,18 +43,7 @@ public class Booking {
         this.state = createdState;
 
         this.customer = customer;
-        Movie movie1 = new Movie("Gladiator", 9, "Beast movie");
-        Movie movie2 = new Movie("The Simpsons", 11, "Cartoon movie");
-        for ( int i = 0; i < 5; i++ ) {
-            Ticket t;
-            if( i % 2 == 0 ) {
-                t = new Ticket(movie1);
-            }
-            else {
-                t = new Ticket(movie2);
-            }
-            ticketList.put(t.getId(), t);
-        }
+
     }
 
     public int getId() {
@@ -80,11 +70,29 @@ public class Booking {
         this.state = state;
     }
 
+    public void setLastModified() {
+        this.lastModified = LocalDateTime.now();
+    }
+
     public State getState() {
         return this.state;
     }
 
     public void getTickets() {
+
+        Movie movie1 = new Movie("Gladiator", 9, "Beast movie");
+        Movie movie2 = new Movie("The Simpsons", 11, "Cartoon movie");
+        for ( int i = 0; i < 5; i++ ) {
+            Ticket t;
+            if( i % 2 == 0 ) {
+                t = new Ticket(movie1);
+            }
+            else {
+                t = new Ticket(movie2);
+            }
+            ticketList.put(t.getId(), t);
+        }
+
         for (Object o : ticketList.entrySet()) {
             Map.Entry ticket = (Map.Entry) o;
             Ticket ticketObject = (Ticket)ticket.getValue();

@@ -11,6 +11,10 @@ public abstract class State {
 		throw new UnsupportedOperationException();
 	}
 
+	public void checkPaymentStatus() {
+		throw new UnsupportedOperationException();
+	}
+
 	public void payBooking() {
 		throw new UnsupportedOperationException();
 	}

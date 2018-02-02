@@ -1,6 +1,8 @@
 package com.jensderond.Data;
 
+import java.util.List;
+
 public interface DataStorage {
-    String getData();
+    List<String> getData();
     boolean setData(String data);
 }
