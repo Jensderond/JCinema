@@ -1,12 +1,21 @@
 package com.jensderond;
 
-public interface State {
 
-	void create();
+public abstract class State {
 
-	void update();
+	void create() {
+		throw new UnsupportedOperationException();
+	}
 
-	void payBooking();
+	void update() {
+		throw new UnsupportedOperationException();
+	}
 
-	void cancel();
+	void payBooking() {
+		throw new UnsupportedOperationException();
+	}
+
+	void cancel() {
+		throw new UnsupportedOperationException();
+	}
 }

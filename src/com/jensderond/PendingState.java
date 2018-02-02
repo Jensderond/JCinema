@@ -1,15 +1,10 @@
 package com.jensderond;
 
-public class PendingState implements State {
+public class PendingState extends State {
     private Booking booking;
 
     public PendingState(Booking booking) {
         this.booking = booking;
-    }
-
-    @Override
-    public void create() {
-        System.out.println( "You can't create a booking in this state" );
     }
 
     @Override

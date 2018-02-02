@@ -27,36 +27,28 @@ public class BookingTest {
         assertEquals("Create booking in default Create state", this.booking.pendingState.getClass(), this.booking.getState().getClass());
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = UnsupportedOperationException.class)
     public void createBookingInPendingState() {
         this.booking.createBooking();
         this.booking.createBooking();
-
-        assertEquals("Create booking in the Paid state", this.booking.pendingState.getClass(), this.booking.getState().getClass());
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = UnsupportedOperationException.class)
     public void createBookingInPaidState() {
         this.booking.createBooking();
         this.booking.payBooking();
         this.booking.createBooking();
-
-        assertEquals("Create booking in the Paid state", this.booking.paidState.getClass(), this.booking.getState().getClass());
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = UnsupportedOperationException.class)
     public void createBookingInCanceledState() {
         this.booking.cancelBooking();
         this.booking.createBooking();
-
-        assertEquals("Create booking in the Canceled state", this.booking.canceledState.getClass(), this.booking.getState().getClass());
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = UnsupportedOperationException.class)
     public void updateBookingInCreateState() {
         this.booking.updateBooking();
-
-        assertEquals("You can Update booking in the Create state", this.booking.createdState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
@@ -67,28 +59,22 @@ public class BookingTest {
         assertEquals("You can Update booking in the Pending state", this.booking.pendingState.getClass(), this.booking.getState().getClass());
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = UnsupportedOperationException.class)
     public void updateBookingInPaidState() {
         this.booking.createBooking();
         this.booking.payBooking();
         this.booking.updateBooking();
-
-        assertEquals("You can't Update booking in the Paid state", this.booking.paidState.getClass(), this.booking.getState().getClass());
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = UnsupportedOperationException.class)
     public void updateBookingInCanceledState() {
         this.booking.cancelBooking();
         this.booking.updateBooking();
-
-        assertEquals("You can't Update booking in the Canceled state", this.booking.canceledState.getClass(), this.booking.getState().getClass());
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = UnsupportedOperationException.class)
     public void payBookingInCreateState() {
         this.booking.payBooking();
-
-        assertEquals("You can Pay booking in the Create state", this.booking.createdState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
@@ -99,20 +85,17 @@ public class BookingTest {
         assertEquals("You can Pay booking in the Pending state", this.booking.paidState.getClass(), this.booking.getState().getClass());
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = UnsupportedOperationException.class)
     public void payBookingInPaidState() {
         this.booking.createBooking();
         this.booking.payBooking();
-
-        assertEquals("You can't Pay booking in the Paid state", this.booking.paidState.getClass(), this.booking.getState().getClass());
+        this.booking.payBooking();
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = UnsupportedOperationException.class)
     public void payBookingInCanceledState(){
         this.booking.cancelBooking();
         this.booking.payBooking();
-
-        assertEquals("You can't Pay booking in the cancel state", this.booking.canceledState.getClass(), this.booking.getState().getClass());
     }
 
     @org.junit.Test
@@ -130,13 +113,18 @@ public class BookingTest {
         assertEquals("You can cancel a booking in pending state", this.booking.canceledState.getClass(), this.booking.getState().getClass());
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = UnsupportedOperationException.class)
     public void cancelBookingInPaidState(){
         this.booking.createBooking();
         this.booking.payBooking();
         this.booking.cancelBooking();
+    }
 
-        assertEquals("You can't cancel the booking in paid state", this.booking.paidState.getClass(), this.booking.getState().getClass());
+    @org.junit.Test(expected = UnsupportedOperationException.class)
+    public void cancelBookingInCancelState(){
+        this.booking.createBooking();
+        this.booking.cancelBooking();
+        this.booking.cancelBooking();
     }
 
 }
