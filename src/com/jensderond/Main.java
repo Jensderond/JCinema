@@ -4,7 +4,7 @@ public class Main {
 
     public Main() {
         Customer jens = new Customer("Jens");
-        Booking booking = new Booking(jens, "EVENT");
+        Booking booking = new Booking(jens, "EVENT", "SMS");
         booking.createBooking();
         booking.cancelBooking();
         booking.payBooking();

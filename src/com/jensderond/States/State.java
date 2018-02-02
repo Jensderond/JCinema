@@ -1,21 +1,21 @@
-package com.jensderond;
+package com.jensderond.States;
 
 
 public abstract class State {
 
-	void create() {
+	public void create() {
 		throw new UnsupportedOperationException();
 	}
 
-	void update() {
+	public void update() {
 		throw new UnsupportedOperationException();
 	}
 
-	void payBooking() {
+	public void payBooking() {
 		throw new UnsupportedOperationException();
 	}
 
-	void cancel() {
+	public void cancel() {
 		throw new UnsupportedOperationException();
 	}
 }

@@ -1,4 +1,6 @@
-package com.jensderond;
+package com.jensderond.States;
+
+import com.jensderond.Booking;
 
 public class PaidState extends State {
     private Booking booking;

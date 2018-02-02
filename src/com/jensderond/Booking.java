@@ -2,6 +2,9 @@ package com.jensderond;
 
 import com.jensderond.Data.DataStorage;
 import com.jensderond.Data.StorageFactory;
+import com.jensderond.Message.MessageFactory;
+import com.jensderond.Message.SendMessage;
+import com.jensderond.States.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,8 +21,9 @@ public class Booking {
     private Map<Integer, Ticket> ticketList = new HashMap<>();
     private State state;
     private DataStorage dataStorage;
+    private SendMessage messageMedium;
 
-    public Booking(Customer customer, String storageType) {
+    public Booking(Customer customer, String storageType, String messageType) {
         this.id = i++;
 
         // Get storageType from factory
@@ -27,6 +31,11 @@ public class Booking {
         dataStorage = storageFactory.getStorage(storageType);
         dataStorage.getData();
         dataStorage.setData("Anton is awesome");
+
+        // Get messageType from factory
+        MessageFactory messageFactory = new MessageFactory();
+        messageMedium = messageFactory.getMessageType(messageType);
+        messageMedium.sendMessage("Lets go");
 
         // Initialize all states
         this.createdState = new CreatedState(this);

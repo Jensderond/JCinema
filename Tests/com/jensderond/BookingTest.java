@@ -11,7 +11,7 @@ public class BookingTest {
     @Before
     public void setUp() {
         this.customer = new Customer("Jens");
-        this.booking = new Booking(this.customer);
+        this.booking = new Booking(this.customer, "EVENT");
     }
 
     @After
