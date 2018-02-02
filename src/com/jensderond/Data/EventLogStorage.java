@@ -9,6 +9,8 @@ public class EventLogStorage implements DataStorage {
 
     @Override
     public boolean setData(String data) {
+        System.out.println("***  EVENTLOG  ***");
+        System.out.println(data);
         return true;
     }
 }

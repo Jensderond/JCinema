@@ -9,6 +9,8 @@ public class DatabaseStorage implements DataStorage {
 
     @Override
     public boolean setData(String data) {
+        System.out.println("***  DATABASE  ***");
+        System.out.println(data);
         return true;
     }
 }

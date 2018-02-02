@@ -19,7 +19,6 @@ public class Main {
         Booking booking = new Booking(jens, dataStorage, messageMedium);
         booking.createBooking();
         booking.cancelBooking();
-        booking.payBooking();
     }
 
     public static void main(String[] args) {

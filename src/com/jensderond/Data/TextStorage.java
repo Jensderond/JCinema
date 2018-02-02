@@ -9,6 +9,8 @@ public class TextStorage implements DataStorage {
 
     @Override
     public boolean setData(String data) {
+        System.out.println("***  TEXT  ***");
+        System.out.println(data);
         return true;
     }
 }

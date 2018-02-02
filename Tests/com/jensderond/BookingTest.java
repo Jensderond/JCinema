@@ -1,5 +1,9 @@
 package com.jensderond;
 
+import com.jensderond.Data.DataStorage;
+import com.jensderond.Data.StorageFactory;
+import com.jensderond.Message.MessageFactory;
+import com.jensderond.Message.SendMessage;
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.*;
@@ -10,8 +14,13 @@ public class BookingTest {
 
     @Before
     public void setUp() {
+
+        MessageFactory messageFactory = new MessageFactory();
+        SendMessage messageMedium = messageFactory.getMessageType("SMS");
+        StorageFactory storageFactory = new StorageFactory();
+        DataStorage dataStorage = storageFactory.getStorage("EVENT");
         this.customer = new Customer("Jens");
-        this.booking = new Booking(this.customer, "EVENT");
+        this.booking = new Booking(this.customer, dataStorage, messageMedium );
     }
 
     @After
